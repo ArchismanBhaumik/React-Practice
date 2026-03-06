@@ -1,28 +1,19 @@
-import React, {useEffect} from "react";
+import React from "react";
 import ListItem from "./ListItem";
 
-const UnapprovedList = ({ allItems, setUpdatedItem, updatedItem }) => {
-  const filterApproved = () => {
-    const filteredItems = allItems.filter((item) => {
-      return item.approved == false;
-    });
-    return filteredItems;
-  };
-  let unApprovedList = filterApproved();
-  useEffect(() => {
-    filterApproved();
-  }, [updatedItem]);
+const UnapprovedList = ({ allItems, setUpdatedItem }) => {
+
+  const unApprovedList = allItems.filter(item => !item.approved);
+
   return (
     <div>
       <h3>Un Approved List</h3>
       <ul>
-        {unApprovedList.map((item, index) => {
-          return (
-            <li key={index}>
-              <ListItem item={item} setUpdatedItem={setUpdatedItem} />
-            </li>
-          );
-        })}
+        {unApprovedList.map((item, index) => (
+          <li key={index}>
+            <ListItem item={item} setUpdatedItem={setUpdatedItem} />
+          </li>
+        ))}
       </ul>
     </div>
   );

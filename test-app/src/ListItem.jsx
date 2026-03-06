@@ -1,22 +1,20 @@
-import React from 'react'
-import { useState } from 'react';
+import React from "react";
 
-const ListItem = ({item,setUpdatedItem}) => {
-const [isApproved,setIsApproved] = useState(item);
-const setApproved = () =>{
-    const updated = { ...isApproved, approved: !isApproved.approved };
+const ListItem = ({ item, setUpdatedItem }) => {
 
-    setIsApproved(updated);
+  const setApproved = () => {
+    const updated = { ...item, approved: !item.approved };
     setUpdatedItem(updated);
+  };
 
-    console.log("item:", updated);
-}
   return (
     <>
-    <span>{item.name}</span>
-    <button onClick={()=>setApproved()}>{item.approved?'Approved':'Approve'}</button>
+      <span>{item.name}</span>
+      <button onClick={setApproved}>
+        {item.approved ? "Approved" : "Approve"}
+      </button>
     </>
-  )
-}
+  );
+};
 
-export default ListItem
+export default ListItem;
